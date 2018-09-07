@@ -1,0 +1,40 @@
+#This is a structural YAML to  install httpd on CENTOS
+# a group of hosts on which we will install httpd
+- hosts: centos 
+#user through which we will execute commands
+  remote_user: ansible
+#become root
+  become: yes
+  become_method: sudo
+  connection: ssh
+  gather_facts: yes
+  vars:
+    - hosts: centos
+#user through which we will execute commands
+  remote_user: ansible
+#become root 
+  become: yes
+  become_method: sudo
+  connection: ssh
+  gather_facts: yes 
+  vars:
+    username: myuser
+  task:
+  - name: Install HTTPD server on CentOS 7 nodes
+    yum:
+      name: httpd
+      state: latest
+    notify:
+    - startservice 
+  handlers:
+  -name startservice
+  service:
+    name: httpd
+    state: restarted
+    
+# We are done with defining host environment.
+  
+
+
+
+
