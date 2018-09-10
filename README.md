@@ -1,2 +1,2 @@
 # ansible-playbooks
-ansible sample playbooks
+practicing with ansible.
